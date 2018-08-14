@@ -1,0 +1,79 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Cadastro de Moradias</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="fechar()">       
+       <ion-icon name="md-close-circle"></ion-icon>
+      </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-item>
+      <ion-label floating>Nome:</ion-label>
+      <ion-input type="text" [(ngModel)]="moradiaDto.NomeMoradia"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Descrição:</ion-label>
+      <ion-textarea [(ngModel)]="moradiaDto.DescricaoMoradia"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Logradouro:</ion-label>
+      <ion-input type="text" [(ngModel)]="moradiaDto.Logradouro"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Número:</ion-label>
+      <ion-input type="number" [(ngModel)]="moradiaDto.Numero"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Bairro:</ion-label>
+      <ion-input type="text" [(ngModel)]="moradiaDto.Bairro"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>CEP:</ion-label>
+      <ion-input type="text" [(ngModel)]="moradiaDto.CEP"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Cidade:</ion-label>
+      <ion-input type="text" [(ngModel)]="moradiaDto.Cidade"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Estado:</ion-label>
+      <ion-input type="text" [(ngModel)]="moradiaDto.Estado"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>País:</ion-label>
+      <ion-input type="text" [(ngModel)]="moradiaDto.Pais"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label floating>Valor:</ion-label>
+      <ion-input type="number" [(ngModel)]="moradiaDto.ValorAluguel"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Disponibilidade</ion-label>
+      <ion-toggle  [(ngModel)]="moradiaDto.Disponibilidade" ></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Selecionar Foto:</ion-label>
+      <ion-input type="file" (change)="changeListener($event)" name="imagem"></ion-input>
+    </ion-item>
+      
+    <button ion-button small (click)="salvar()">
+        Salvar
+    </button>
+ 
+</ion-content>

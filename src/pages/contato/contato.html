@@ -1,0 +1,32 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Contato</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    
+      <ion-item>
+          <ion-input placeholder="Assunto" [(ngModel)]="assunto"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Seu email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-textarea placeholder="Mensagem" [(ngModel)]="mensagem"></ion-textarea>
+      </ion-item>
+
+      <button ion-button full (click)="enviarEmail()">Enviar</button>
+
+  </ion-list>
+
+</ion-content>

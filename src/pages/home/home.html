@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar color="primary">
+      <img width="80" height="80" src="assets/imgs/yourplace.png" />
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-searchbar
+  [(ngModel)]="myInput"
+  [showCancelButton]="shouldShowCancel"
+  (ionInput)="onInput($event)"
+  (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+
+  <ion-card *ngFor="let moradiaDto of moradias">
+
+      <img src={{moradiaDto.Imagem}}/>
+
+      <ion-card-content>
+
+        <ion-card-title>
+          {{moradiaDto.NomeMoradia}}
+        </ion-card-title>
+
+        <p>
+          Logradouro: {{moradiaDto.Logradouro}}
+          <br>
+          Número: {{moradiaDto.Logradouro}}
+          <br>
+          Bairro: {{moradiaDto.Bairro}}
+          <br>
+          Cidade: {{moradiaDto.Cidade}}
+          <br>
+          Estado: {{moradiaDto.Estado}}
+          <br>
+          País: {{moradiaDto.Pais}}
+        </p>
+
+        <p>
+            Valor: {{moradiaDto.ValorAluguel}}
+        </p>
+
+      </ion-card-content>
+
+      <button ion-button full>Alugar</button>
+      <button ion-button full>Detalhes</button>
+    </ion-card>
+
+</ion-content>
