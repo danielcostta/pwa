@@ -23,7 +23,8 @@ export class CadastromoradiaPage {
               private sanitizer: DomSanitizer,
               private cepProvider: CepProvider) {
 
-                this.montarTela(); 
+                this.montarTela();
+                this.moradiaDto.Pais = "Brasil";
 
   }
 
@@ -45,7 +46,7 @@ export class CadastromoradiaPage {
         this.moradiaDto.Logradouro = "";
         this.moradiaDto.Numero = 0;
         this.moradiaDto.Bairro = "";
-        this.moradiaDto.CEP = 0;
+        this.moradiaDto.CEP = "";
         this.moradiaDto.Cidade = "";
         this.moradiaDto.Estado = "";
         this.moradiaDto.Pais = "";

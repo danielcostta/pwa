@@ -6,7 +6,7 @@ export class MoradiaDto{
     public Logradouro: String;
     public Numero: number;
     public Bairro: String;
-    public CEP: number;
+    public CEP: string;
     public Cidade: String;
     public Estado: String;
     public Pais: String;

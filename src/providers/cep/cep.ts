@@ -10,7 +10,7 @@ export class CepProvider {
     
   }
 
-  buscar(cep:number){
+  buscar(cep:string){
     return this.http.get(`https://viacep.com.br/ws/${cep}/json/`)
               .toPromise()
               .then(response => {
