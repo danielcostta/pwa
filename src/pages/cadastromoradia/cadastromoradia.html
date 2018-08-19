@@ -23,6 +23,14 @@
     </ion-item>
 
     <ion-item>
+      <ion-label floating>CEP:</ion-label>
+      <ion-input type="number" [(ngModel)]="moradiaDto.CEP"></ion-input>
+    </ion-item>
+    <button ion-button (click)="pesquisaCEP()">
+      Buscar
+    </button>
+
+    <ion-item>
       <ion-label floating>Logradouro:</ion-label>
       <ion-input type="text" [(ngModel)]="moradiaDto.Logradouro"></ion-input>
     </ion-item>
@@ -35,11 +43,6 @@
     <ion-item>
       <ion-label floating>Bairro:</ion-label>
       <ion-input type="text" [(ngModel)]="moradiaDto.Bairro"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>CEP:</ion-label>
-      <ion-input type="text" [(ngModel)]="moradiaDto.CEP"></ion-input>
     </ion-item>
 
     <ion-item>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { MoradiaDto } from '../../Model/moradiaDto';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CepProvider } from '../../providers/cep/cep';
 
 @IonicPage()
 @Component({
@@ -19,7 +20,8 @@ export class CadastromoradiaPage {
               public navParams: NavParams,
               public viewCtrl: ViewController,
               private alertCtrl: AlertController,
-              private sanitizer: DomSanitizer) {
+              private sanitizer: DomSanitizer,
+              private cepProvider: CepProvider) {
 
                 this.montarTela(); 
 
@@ -136,6 +138,14 @@ export class CadastromoradiaPage {
 
     }
     
+  }
+
+  pesquisaCEP(){
+    this.cepProvider.buscar(this.moradiaDto.CEP)
+          .then((moradiaDto:MoradiaDto) => this.moradiaDto = moradiaDto)
+          .catch(() =>{
+            alert('Erro!');
+          })
   }
 
   alerta(mensagem)

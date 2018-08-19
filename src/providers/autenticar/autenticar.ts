@@ -1,6 +1,6 @@
 import { AngularFireAuth } from 'angularfire2/auth';
-// import * as firebase from 'firebase/app'
 import { Injectable } from '@angular/core';
+//import { FirebaseAuth } from '@firebase/auth-types';
 
 @Injectable()
 export class AutenticarProvider {
@@ -30,6 +30,7 @@ export class AutenticarProvider {
         .then( user =>
         {
            Promise.resolve(user)
+           //FirebaseAuth.Persistence.LOCAL;
         })
         .catch(err=> 
           {

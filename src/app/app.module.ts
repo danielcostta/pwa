@@ -6,12 +6,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AutenticarProvider } from '../providers/autenticar/autenticar';
 import { FirebasemoradiaProvider } from '../providers/firebasemoradia/firebasemoradia';
 import { FirebaseusuarioProvider } from '../providers/firebaseusuario/firebaseusuario';
+import { CepProvider } from '../providers/cep/cep';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCg_sOPp4_wVpOFURldKtPhP-89j104iNw",
@@ -32,7 +36,9 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -45,7 +51,8 @@ export const firebaseConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AutenticarProvider,
     FirebasemoradiaProvider,
-    FirebaseusuarioProvider
+    FirebaseusuarioProvider,
+    CepProvider
   ]
 })
 export class AppModule {}
