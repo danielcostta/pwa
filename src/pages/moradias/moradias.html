@@ -34,11 +34,11 @@
         </ion-card-title>
 
           <p>Descrição: {{moradiaDto.DescricaoMoradia}}</p>
-          <p>Valor: R$ {{moradiaDto.ValorAluguel}} Reais</p>
-          <p>Disponibilidade: {{moradiaDto.Disponibilidade}}</p>
-          <p>Valor: {{moradiaDto.ValorAluguel}}</p>
+          <p>Valor: R$ {{moradiaDto.ValorAluguel}} ,00</p>
 
       </ion-card-content>
+
+      <button ion-button round (click)="detalhar()">Detalhes</button>
 
       <button ion-button  clear small icon-only color="blue" icon-start (click)="editar(moradiaDto)">
         <ion-icon name="checkmark-circle-outline"></ion-icon>

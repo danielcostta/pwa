@@ -14,7 +14,6 @@ export class CepProvider {
     return this.http.get(`https://viacep.com.br/ws/${cep}/json/`)
               .toPromise()
               .then(response => {
-                console.log(response);
                 return this.converterResposta(response.json())
               });
   }
@@ -26,6 +25,16 @@ export class CepProvider {
     moradiaDto.Bairro = cepResposta.bairro;
     moradiaDto.Cidade = cepResposta.localidade;
     moradiaDto.Estado = cepResposta.uf;
+
+    moradiaDto.IdMoradia = 0;
+    moradiaDto.NomeMoradia = "";
+    moradiaDto.DescricaoMoradia = "";
+    moradiaDto.Contato = 0;
+    moradiaDto.Pais = "Brasil";
+    moradiaDto.ValorAluguel = 0;
+    moradiaDto.Imagem = "";
+    moradiaDto.Numero = 0;
+
     return moradiaDto;
   }
 

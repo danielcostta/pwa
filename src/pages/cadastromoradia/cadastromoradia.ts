@@ -51,8 +51,8 @@ export class CadastromoradiaPage {
         this.moradiaDto.Estado = "";
         this.moradiaDto.Pais = "";
         this.moradiaDto.ValorAluguel = 0;
-        this.moradiaDto.Disponibilidade = true;
         this.moradiaDto.Imagem = "";
+        this.moradiaDto.Contato = 0;
     }
 
   }
@@ -109,6 +109,11 @@ export class CadastromoradiaPage {
       return;
     }
 
+    if (this.moradiaDto.Contato.toString() == ""){
+      alert("O telefone não foi informado");
+      return;
+    }
+
     if (this.moradiaDto.ValorAluguel.toString() == "" || this.moradiaDto.ValorAluguel == 0){
         alert("O valor do aluguel não foi informado ou é inválido");
         return;
@@ -142,7 +147,7 @@ export class CadastromoradiaPage {
   }
 
   pesquisaCEP(){
-    this.cepProvider.buscar(this.moradiaDto.CEP)
+    this.cepProvider.buscar(this.moradiaDto.CEP.toString())
           .then((moradiaDto:MoradiaDto) => this.moradiaDto = moradiaDto)
           .catch(() =>{
             alert('Erro!');
