@@ -30,35 +30,16 @@ export class HomePage {
   }
 
   carregarMoradias(){     
-  
-    if (this.nomeMoradia == "")
-    {
       this.buscartodos.getMoradias().subscribe(moradias => 
         {   
             this.moradias = new Array<MoradiaDto>();   
-            let i = 0;
-            moradias.forEach(element => {             
-                this.moradias.length = 
-                  this.moradias.length + 1; 
-                this.moradias[i] = element;
-                i = i + 1;
+            moradias.forEach(element => {
+              let key = Object.keys(element)[0];    
+                this.moradias[key] = element;
+                console.log(this.moradias[key]);
             });
         });
-    }
-    else {
-      this.buscartodos.getMoradiaInicio(this.nomeMoradia.toString())
-        .subscribe(moradias => 
-        {   
-            this.moradias = new Array<MoradiaDto>();   
-            let i = 0;
-            moradias.forEach(element => {             
-                this.moradias.length = 
-                  this.moradias.length + 1; 
-                this.moradias[i] = element;
-                i = i + 1;
-            });
-        });
-    }     
+   
   }
  
 pesquisar() {

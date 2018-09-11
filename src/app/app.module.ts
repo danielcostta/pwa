@@ -14,7 +14,6 @@ import { HomePage } from '../pages/home/home';
 import { AutenticarProvider } from '../providers/autenticar/autenticar';
 import { FirebasemoradiaProvider } from '../providers/firebasemoradia/firebasemoradia';
 import { CepProvider } from '../providers/cep/cep';
-import { FirebaseenderecoProvider } from '../providers/firebaseendereco/firebaseendereco';
 import { BuscarTodosProvider } from '../providers/buscar-todos/buscar-todos';
 
 export const firebaseConfig = {
@@ -52,7 +51,6 @@ export const firebaseConfig = {
     AutenticarProvider,
     FirebasemoradiaProvider,
     CepProvider,
-    FirebaseenderecoProvider,
     BuscarTodosProvider
   ]
 })

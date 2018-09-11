@@ -20,7 +20,6 @@
 
 </ion-header>
 
-
 <ion-content padding>
 
     <ion-card *ngFor="let moradiaDto of moradias">
@@ -34,19 +33,16 @@
         </ion-card-title>
 
           <p>Descrição: {{moradiaDto.DescricaoMoradia}}</p>
-          <p>Valor: R$ {{moradiaDto.ValorAluguel}} ,00</p>
+          <p>Telefone: {{moradiaDto.Contato}}</p>
+          <p>Valor: R$ {{moradiaDto.ValorAluguel}}</p>
 
       </ion-card-content>
 
       <button ion-button round (click)="detalhar()">Detalhes</button>
 
-      <button ion-button  clear small icon-only color="blue" icon-start (click)="editar(moradiaDto)">
-        <ion-icon name="checkmark-circle-outline"></ion-icon>
-      </button> 
+      <button ion-button round (click)="editar(moradiaDto)">Editar</button> 
                   
-      <button ion-button  clear small icon-only color="danger" icon-start (click)="excluir(moradiaDto)">
-        <ion-icon name="trash"></ion-icon>
-      </button>
+      <button ion-button round (click)="excluir(moradiaDto)">Excluir</button>
 
     </ion-card>
 

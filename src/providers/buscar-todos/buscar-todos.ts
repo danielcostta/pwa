@@ -13,7 +13,7 @@ export class BuscarTodosProvider {
 
 private getPath()
 {
-return 'moradia/'; 
+return ''; 
 }
 
 getNomeMoradia(nomeMoradia : string)
@@ -41,9 +41,7 @@ this.getPath() + "/" + key).valueChanges();
 }  
 
 getMoradias() {
-
-return this.afDB.list<MoradiaDto>(this.getPath(),
-ref => ref.orderByChild('NomeMoradia'))
+return this.afDB.list<MoradiaDto>(this.getPath(), ref => ref.orderByChild('NomeMoradia'))
 .valueChanges();     
 }
 
