@@ -30,9 +30,10 @@ export class HomePage {
   carregarMoradias() {
     this.loadMoradias();
     this.buscartodos.getMoradias().subscribe(moradias => {
-      this.moradias = new Array<MoradiaDto>();   
+      this.moradias = new Array<MoradiaDto>();
       moradias.forEach(element => {
-        this.moradias.push(element);
+        let key = Object.keys(element)[0]
+        this.moradias.push(element[key]);
       });
       this.loading.dismiss();
     });
