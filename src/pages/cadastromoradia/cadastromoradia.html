@@ -12,14 +12,12 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-item>
-      <ion-label floating>Nome:</ion-label>
-      <ion-input type="text" [(ngModel)]="moradiaDto.NomeMoradia"></ion-input>
-    </ion-item>
+
+    <h2>Endereço:</h2>
 
     <ion-item>
-      <ion-label floating>Descrição:</ion-label>
-      <ion-textarea [(ngModel)]="moradiaDto.DescricaoMoradia"></ion-textarea>
+      <ion-label floating>CEP:</ion-label>
+      <ion-input type="text" [(ngModel)]="moradiaDto.CEP" (change)="pesquisaCEP()"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -38,11 +36,6 @@
     </ion-item>
 
     <ion-item>
-      <ion-label floating>CEP:</ion-label>
-      <ion-input type="text" [(ngModel)]="moradiaDto.CEP"></ion-input>
-    </ion-item>
-
-    <ion-item>
       <ion-label floating>Cidade:</ion-label>
       <ion-input type="text" [(ngModel)]="moradiaDto.Cidade"></ion-input>
     </ion-item>
@@ -54,17 +47,29 @@
 
     <ion-item>
       <ion-label floating>País:</ion-label>
-      <ion-input type="text" [(ngModel)]="moradiaDto.Pais"></ion-input>
+      <ion-input type="text" disabled="true" [(ngModel)]="moradiaDto.Pais"></ion-input>
     </ion-item>
-    
+
+    <h2>Informações:</h2>
+
+    <ion-item>
+      <ion-label floating>Nome:</ion-label>
+      <ion-input type="text" [(ngModel)]="moradiaDto.NomeMoradia"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Descrição:</ion-label>
+      <ion-textarea [(ngModel)]="moradiaDto.DescricaoMoradia"></ion-textarea>
+    </ion-item>
+
     <ion-item>
       <ion-label floating>Valor:</ion-label>
       <ion-input type="number" [(ngModel)]="moradiaDto.ValorAluguel"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Disponibilidade</ion-label>
-      <ion-toggle  [(ngModel)]="moradiaDto.Disponibilidade" ></ion-toggle>
+      <ion-label floating>Telefone:</ion-label>
+      <ion-input type="number" [(ngModel)]="moradiaDto.Contato"></ion-input>
     </ion-item>
 
     <ion-item>

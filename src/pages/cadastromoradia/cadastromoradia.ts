@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { MoradiaDto } from '../../Model/moradiaDto';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CepProvider } from '../../providers/cep/cep';
 
 @IonicPage()
 @Component({
@@ -19,9 +20,11 @@ export class CadastromoradiaPage {
               public navParams: NavParams,
               public viewCtrl: ViewController,
               private alertCtrl: AlertController,
-              private sanitizer: DomSanitizer) {
+              private sanitizer: DomSanitizer,
+              private cepProvider: CepProvider) {
 
-                this.montarTela(); 
+                this.montarTela();
+                this.moradiaDto.Pais = "Brasil";
 
   }
 
@@ -43,13 +46,13 @@ export class CadastromoradiaPage {
         this.moradiaDto.Logradouro = "";
         this.moradiaDto.Numero = 0;
         this.moradiaDto.Bairro = "";
-        this.moradiaDto.CEP = 0;
+        this.moradiaDto.CEP = "";
         this.moradiaDto.Cidade = "";
         this.moradiaDto.Estado = "";
         this.moradiaDto.Pais = "";
         this.moradiaDto.ValorAluguel = 0;
-        this.moradiaDto.Disponibilidade = true;
         this.moradiaDto.Imagem = "";
+        this.moradiaDto.Contato = 0;
     }
 
   }
@@ -106,6 +109,11 @@ export class CadastromoradiaPage {
       return;
     }
 
+    if (this.moradiaDto.Contato.toString() == ""){
+      alert("O telefone não foi informado");
+      return;
+    }
+
     if (this.moradiaDto.ValorAluguel.toString() == "" || this.moradiaDto.ValorAluguel == 0){
         alert("O valor do aluguel não foi informado ou é inválido");
         return;
@@ -136,6 +144,14 @@ export class CadastromoradiaPage {
 
     }
     
+  }
+
+  pesquisaCEP(){
+    this.cepProvider.buscar(this.moradiaDto.CEP.toString())
+          .then((moradiaDto:MoradiaDto) => this.moradiaDto = moradiaDto)
+          .catch(() =>{
+            alert('Erro!');
+          })
   }
 
   alerta(mensagem)

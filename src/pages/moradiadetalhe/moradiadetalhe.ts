@@ -2,17 +2,15 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { MoradiaDto } from '../../Model/moradiaDto';
 import { FirebasemoradiaProvider } from '../../providers/firebasemoradia/firebasemoradia';
-import { MoradiadetalhePage } from '../moradiadetalhe/moradiadetalhe';
 
 @IonicPage()
 @Component({
-  selector: 'page-moradias',
-  templateUrl: 'moradias.html',
+  selector: 'page-moradiadetalhe',
+  templateUrl: 'moradiadetalhe.html',
 })
-export class MoradiasPage {
+export class MoradiadetalhePage {
 
-  nomeMoradia : String = "";
-  cepMoradia : String = "";
+  nomeMoradia : String="";
   moradias : Array<MoradiaDto>;
   mensagem : String = "Moradias: ";
 
@@ -126,40 +124,6 @@ salvar(moradia : MoradiaDto){
     .then( ok => {       
        } );
   
-}
- 
-pesquisar() {
-  let prompt = this.alertCtrl.create({
-    title: 'Atenção',
-    message: "Informe o nome do imóvel",
-    inputs: [
-      {
-        name: 'Imóvel',
-        placeholder: 'Nome do imóvel'
-      },
-    ],
-    buttons: [
-      {
-        text: 'Cancelar',
-        handler: data => {
-          this.nomeMoradia = "";
-          this.carregarMoradias();
-        }
-      },
-      {
-        text: 'Pesquisar',
-        handler: data => {
-          this.nomeMoradia = data.Moradia;
-          this.carregarMoradias();
-        }
-      }
-    ]
-  });
-  prompt.present();
-}
-
-detalhar(){
-  this.navCtrl.push("MoradiadetalhePage");
 }
 
 alerta(mensagem)

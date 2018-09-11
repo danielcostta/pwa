@@ -9,45 +9,28 @@
 
 <ion-content padding>
 
-  <ion-searchbar
-  [(ngModel)]="myInput"
-  [showCancelButton]="shouldShowCancel"
-  (ionInput)="onInput($event)"
-  (ionCancel)="onCancel($event)">
+  <ion-searchbar (click)="pesquisar()">
   </ion-searchbar>
 
   <ion-card *ngFor="let moradiaDto of moradias">
 
-      <img src={{moradiaDto.Imagem}}/>
+      <img src={{moradiaDto.Imagem}} height="200" width="100"/>
 
       <ion-card-content>
 
-        <ion-card-title>
+      <ion-card-title>
           {{moradiaDto.NomeMoradia}}
-        </ion-card-title>
-
-        <p>
-          Logradouro: {{moradiaDto.Logradouro}}
-          <br>
-          Número: {{moradiaDto.Logradouro}}
-          <br>
-          Bairro: {{moradiaDto.Bairro}}
-          <br>
-          Cidade: {{moradiaDto.Cidade}}
-          <br>
-          Estado: {{moradiaDto.Estado}}
-          <br>
-          País: {{moradiaDto.Pais}}
-        </p>
-
-        <p>
-            Valor: {{moradiaDto.ValorAluguel}}
-        </p>
+      </ion-card-title>
+    
+        <p>Descrição: {{moradiaDto.DescricaoMoradia}}</p>
+        <p>Valor: R$ {{moradiaDto.ValorAluguel}} Reais</p>
+        <p>Disponibilidade: {{moradiaDto.Disponibilidade}}</p>
+        <p>Valor: {{moradiaDto.ValorAluguel}}</p>
 
       </ion-card-content>
 
-      <button ion-button full>Alugar</button>
-      <button ion-button full>Detalhes</button>
+      <button ion-button round>Alugar</button>
+      <button ion-button round>Detalhes</button>
     </ion-card>
 
 </ion-content>
