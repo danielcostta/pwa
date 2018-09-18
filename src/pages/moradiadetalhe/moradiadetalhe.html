@@ -8,25 +8,25 @@
 
 <ion-content padding>
 
-  <ion-list *ngFor="let moradiaDto of moradias">
+  <ion-list *ngIf="moradia">
 
-    <h2>Nome: {{moradiaDto.NomeMoradia}}</h2>
+    <h2>Nome: {{moradia.NomeMoradia}}</h2>
 
-    <img src={{moradiaDto.Imagem}} height="200" width="100%"/>
+    <img src={{moradia.Imagem}} height="200" width="100%"/>
 
-    <h3>Informações</h3>
-    <ion-item><p>Descrição: {{moradiaDto.DescricaoMoradia}}</p></ion-item>
-    <ion-item><p>Valor: R$ {{moradiaDto.ValorAluguel}} ,00</p></ion-item>
-    <ion-item><p>Telefone: {{moradiaDto.ValorAluguel}} </p></ion-item>
+    <h3>Informações:</h3>
+    <ion-item><p>Descrição: {{moradia.DescricaoMoradia}}</p></ion-item>
+    <ion-item><p>Valor: R$ {{moradia.ValorAluguel}}</p></ion-item>
+    <ion-item><p>Telefone: {{moradia.Contato}} </p></ion-item>
 
     <h3>Endereço:</h3>
-    <ion-item><p>CEP: {{moradiaDto.CEP}}</p></ion-item>
-    <ion-item><p>Logradouro: {{moradiaDto.Logradouro}}</p></ion-item>
-    <ion-item><p>Número: {{moradiaDto.Numero}}</p></ion-item>
-    <ion-item><p>Bairro: {{moradiaDto.Bairro}}</p></ion-item>
-    <ion-item><p>Cidade: {{moradiaDto.Cidade}}</p></ion-item>
-    <ion-item><p>Estado: {{moradiaDto.Estado}}</p></ion-item>
-    <ion-item><p>País: {{moradiaDto.Pais}}</p></ion-item>
+    <ion-item><p>CEP: {{moradia.CEP}}</p></ion-item>
+    <ion-item><p>Logradouro: {{moradia.Logradouro}}</p></ion-item>
+    <ion-item><p>Número: {{moradia.Numero}}</p></ion-item>
+    <ion-item><p>Bairro: {{moradia.Bairro}}</p></ion-item>
+    <ion-item><p>Cidade: {{moradia.Cidade}}</p></ion-item>
+    <ion-item><p>Estado: {{moradia.Estado}}</p></ion-item>
+    <ion-item><p>País: {{moradia.Pais}}</p></ion-item>
 
     <ion-item-divider>
       

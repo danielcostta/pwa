@@ -8,6 +8,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -15,6 +16,7 @@ import { AutenticarProvider } from '../providers/autenticar/autenticar';
 import { FirebasemoradiaProvider } from '../providers/firebasemoradia/firebasemoradia';
 import { CepProvider } from '../providers/cep/cep';
 import { BuscarTodosProvider } from '../providers/buscar-todos/buscar-todos';
+import { GeolocalizacaoProvider } from '../providers/geolocalizacao/geolocalizacao';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCg_sOPp4_wVpOFURldKtPhP-89j104iNw",
@@ -51,7 +53,9 @@ export const firebaseConfig = {
     AutenticarProvider,
     FirebasemoradiaProvider,
     CepProvider,
-    BuscarTodosProvider
+    BuscarTodosProvider,
+    GeolocalizacaoProvider,
+    Geolocation
   ]
 })
 export class AppModule {}

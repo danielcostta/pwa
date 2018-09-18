@@ -9,9 +9,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ContatoPage {
 
   assunto: string = "";
-  email: string = "";
   mensagem: string = "";
-  origin: string = "danieljunnio@hotmail.com"
+  destino: string = "danieljunnio@hotmail.com"
   win = eval('window');
 
   constructor(public navCtrl: NavController, 
@@ -23,9 +22,7 @@ export class ContatoPage {
   }
 
   enviarEmail(){
-
-    
-
+      window.open("mailto:"+this.destino+'&subject='+this.assunto+'&body='+this.mensagem, '_self');
   }
 
 }

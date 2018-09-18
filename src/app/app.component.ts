@@ -31,15 +31,16 @@ export class MyApp {
       {title: 'Inicio', component: HomePage},
       {title: 'Entrar', component: 'EntrarPage'},
       {title: 'Cadastrar', component: 'CadastroPage'},
-      {title: 'Contato', component: 'ContatoPage'},
-      {title: 'Sair', component: 'SairPage'}
+      {title: 'Contato', component: 'ContatoPage'}
     ];
 
   }
 
   openPage(page){
-    if(page.title == "Sair")
-    {
+    if(this.auth.getUsuario){
+      page.title == "Sair"
+    }
+    if(page.title == "Sair"){
       this.auth.logout();
       this.nav.push(HomePage);
     }
