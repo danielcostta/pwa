@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpModule, Http } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { MoradiaDto } from '../../Model/moradiaDto';
 

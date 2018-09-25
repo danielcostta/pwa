@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
-import { MoradiaDto } from '../../Model/moradiaDto';
-import { FirebasemoradiaProvider } from '../../providers/firebasemoradia/firebasemoradia';
 import { BuscarTodosProvider } from '../../providers/buscar-todos/buscar-todos';
 
 @IonicPage()
@@ -20,7 +18,6 @@ export class MoradiadetalhePage {
               public navParams: NavParams,
               public alertCtrl: AlertController,
               public modalCtrl: ModalController,
-              private fbmoradia: FirebasemoradiaProvider,
               private buscartodos: BuscarTodosProvider) {
                 this.id = navParams.get('id');
                

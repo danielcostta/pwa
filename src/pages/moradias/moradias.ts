@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { MoradiaDto } from '../../Model/moradiaDto';
 import { FirebasemoradiaProvider } from '../../providers/firebasemoradia/firebasemoradia';
-import { MoradiadetalhePage } from '../moradiadetalhe/moradiadetalhe';
+import { AutenticarProvider } from '../../providers/autenticar/autenticar';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -20,7 +21,8 @@ export class MoradiasPage {
               public navParams: NavParams,
               public alertCtrl: AlertController,
               public modalCtrl: ModalController,
-              private fbmoradia: FirebasemoradiaProvider) {
+              private fbmoradia: FirebasemoradiaProvider,
+              public auth: AutenticarProvider) {
 
                 this.montarTela();
   }
@@ -127,7 +129,7 @@ salvar(moradia : MoradiaDto){
        } );
   
 }
- 
+
 pesquisar() {
   let prompt = this.alertCtrl.create({
     title: 'Atenção',
@@ -149,7 +151,7 @@ pesquisar() {
       {
         text: 'Pesquisar',
         handler: data => {
-          this.nomeMoradia = data.Moradia;
+          this.nomeMoradia = data;
           this.carregarMoradias();
         }
       }
@@ -158,8 +160,13 @@ pesquisar() {
   prompt.present();
 }
 
-detalhar(){
-  this.navCtrl.push("MoradiadetalhePage");
+detalhar(id){
+  this.navCtrl.push("MoradiadetalhePage", {id});
+}
+
+sair(){
+  this.auth.logout();
+  this.navCtrl.setRoot(HomePage);
 }
 
 alerta(mensagem)

@@ -15,12 +15,15 @@
       <button ion-button icon-only (click)="pesquisar()">
         <ion-icon name="search"></ion-icon>
       </button>
+      <button ion-button (click)="sair()">Sair</button>
     </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
+
+  <p></p>
 
     <ion-card *ngFor="let moradiaDto of moradias">
 
@@ -38,11 +41,17 @@
 
       </ion-card-content>
 
-      <button ion-button round (click)="detalhar()">Detalhes</button>
+      <button ion-button round (click)="detalhar(moradiaDto.IdMoradia)">
+        <ion-icon name="arrow-round-down"></ion-icon>
+      </button>
 
-      <button ion-button round (click)="editar(moradiaDto)">Editar</button> 
+      <button ion-button  clear small icon-only color="blue" icon-start (click)="editar(moradiaDto)">
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+      </button> 
                   
-      <button ion-button round (click)="excluir(moradiaDto)">Excluir</button>
+      <button ion-button  clear small icon-only color="danger" icon-start (click)="excluir(moradiaDto)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
 
     </ion-card>
 

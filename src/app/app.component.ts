@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { AutenticarProvider } from '../providers/autenticar/autenticar';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +21,8 @@ export class MyApp {
   constructor(public platform: Platform,
                statusBar: StatusBar, 
                splashScreen: SplashScreen,
-              public auth: AutenticarProvider ) {
+              public auth: AutenticarProvider,
+              public afAuth: AngularFireAuth ) {
 
       platform.ready().then(() => {
       statusBar.styleDefault();
@@ -31,26 +33,31 @@ export class MyApp {
       {title: 'Inicio', component: HomePage},
       {title: 'Entrar', component: 'EntrarPage'},
       {title: 'Cadastrar', component: 'CadastroPage'},
-      {title: 'Contato', component: 'ContatoPage'}
+      {title: 'Contato', component: 'ContatoPage'},
     ];
 
   }
 
+  /*  openPage(page){
+    this.afAuth.authState.subscribe(res => {
+      if (res) {
+        page.title == "Sair";
+      }
+      if(page.title == "Sair"){
+        this.auth.logout();
+        this.nav.push(HomePage);
+      } else {
+        this.nav.setRoot(page.component);
+      }
+    });
+
+   } */
+
   openPage(page){
-    if(this.auth.getUsuario){
-      page.title == "Sair"
-    }
     if(page.title == "Sair"){
-      this.auth.logout();
-      this.nav.push(HomePage);
-    }
-    else
-    {
-      this.nav.setRoot(page.component);
-    }
+      this.auth.logout(); 
+    }else 
+    this.nav.setRoot(page.component);
   }
 
 }
-
-
-

@@ -17,6 +17,7 @@ import { FirebasemoradiaProvider } from '../providers/firebasemoradia/firebasemo
 import { CepProvider } from '../providers/cep/cep';
 import { BuscarTodosProvider } from '../providers/buscar-todos/buscar-todos';
 import { GeolocalizacaoProvider } from '../providers/geolocalizacao/geolocalizacao';
+import { PesquisaProvider } from '../providers/pesquisa/pesquisa';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCg_sOPp4_wVpOFURldKtPhP-89j104iNw",
@@ -55,7 +56,8 @@ export const firebaseConfig = {
     CepProvider,
     BuscarTodosProvider,
     GeolocalizacaoProvider,
-    Geolocation
+    Geolocation,
+    PesquisaProvider
   ]
 })
 export class AppModule {}

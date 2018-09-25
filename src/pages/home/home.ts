@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, AlertController, LoadingController, Platform } from 'ionic-angular';
 import { MoradiaDto } from '../../Model/moradiaDto';
 import { BuscarTodosProvider } from '../../providers/buscar-todos/buscar-todos';
+import { PesquisaProvider } from '../../providers/pesquisa/pesquisa';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GeolocalizacaoProvider } from '../../providers/geolocalizacao/geolocalizacao';
 
@@ -21,7 +22,7 @@ export class HomePage {
   longitudeDestino : 0;
   enderecoDestino : any = "";
   nomeMoradia : String = "";
-  cepMoradia : String = "";
+  cidadeMoradia : String = "";
   moradias : Array<MoradiaDto>;
   mensagem : String = "Moradias: ";
   loading : any;
@@ -34,7 +35,8 @@ export class HomePage {
               public geolocation : Geolocation,
               public platform : Platform,
               private geolocalizacaoProvider: GeolocalizacaoProvider,
-              private buscartodos: BuscarTodosProvider) {
+              private buscartodos: BuscarTodosProvider,
+              private pesquisamoradia: PesquisaProvider) {
 
                 platform.ready().then(()=> {
                   this.obterPosicao();
@@ -94,7 +96,7 @@ export class HomePage {
                         this.longitude), 
                         zoom : 14});
 
-    let marcador = new google.maps.Marker({
+    new google.maps.Marker({
       icon: 'assets/imgs/iconeAqui.png',
       map: this.mapa,
       position: new google.maps.LatLng(
@@ -103,7 +105,7 @@ export class HomePage {
     });
     if (this.latitudeDestino != 0)
      {
-        let marcador2 = new google.maps.Marker({
+        new google.maps.Marker({
           icon: 'assets/imgs/iconeAqui.png',
           map : this.mapa, 
           position : new google.maps.LatLng(this.latitudeDestino, 
@@ -121,30 +123,60 @@ export class HomePage {
            this.enderecoPosicao = retorno;
         });   
   } 
+
+  pesquisaMoradia(){
+    
+    if (this.cidadeMoradia == "")
+    {
+      this.pesquisamoradia.getMoradias().subscribe(moradias => {
+        this.moradias = new Array<MoradiaDto>();
+        moradias.forEach(element => {
+          let key = Object.keys(element)[0]
+          this.moradias.push(element[key]);
+        });
+        this.loading.dismiss();
+      });
+    }
+    else {
+      this.pesquisamoradia.getMoradiaInicio(this.cidadeMoradia.toString())
+        .subscribe(moradias => 
+        {   
+            this.moradias = new Array<MoradiaDto>();   
+            let i = 0;
+            moradias.forEach(element => {             
+                this.moradias.length = 
+                  this.moradias.length + 1; 
+                this.moradias[i] = element;
+                i = i + 1;
+            });
+        });
+    }     
+  }
  
   pesquisar() {
     let prompt = this.alertCtrl.create({
       title: 'Atenção',
-      message: "Informe o CEP do imóvel",
+      message: "Informe a cidade",
       inputs: [
         {
-          name: 'Imóvel',
-          placeholder: 'CEP do Imóvel'
+          name: 'Cidade',
+          placeholder: 'Cidade'
         },
       ],
       buttons: [
         {
           text: 'Cancelar',
           handler: data => {
-            this.cepMoradia = "";
-            this.carregarMoradias();
+            this.cidadeMoradia = "";
+            this.pesquisaMoradia();
           }
         },
         {
           text: 'Pesquisar',
           handler: data => {
-            this.cepMoradia = data.Moradia;
-            this.carregarMoradias();
+            this.cidadeMoradia = data;
+            console.log(this.cidadeMoradia);
+            this.pesquisaMoradia();
           }
         }
       ]

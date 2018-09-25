@@ -25,6 +25,8 @@ self.toolbox.precache(
     './assets/icon/96x96.png',
     './assets/icon/144x144.png',
     './assets/icon/192x192.png',
+    './assets/imgs/yourplace.jpg',
+    './assets/imgs/yourplacelogo.png',
     './build/main.js',
     './build/vendor.js',
     './build/main.css',
